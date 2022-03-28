@@ -82,8 +82,8 @@ class AddBook(View):
         return redirect('librarian/librarianindex')
 
 #class based view for editbook
-#class EditBook()
-
+'''class EditBook(View):
+    def get(self,request,pk):'''
 #editing form function based
 
 def editbook(request, pk):
@@ -103,9 +103,6 @@ def editbook(request, pk):
 
     context = {'data':data}
     return render(request, 'librarian/editbook.html', context)
-#editing form 
-
-
 
 #deleting data from form
 
