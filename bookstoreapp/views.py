@@ -72,18 +72,20 @@ def addbook(request):
         author=request.POST.get('author')
         desc=request.POST.get('desc')
         pdf=request.FILES.get('pdf')
-        obj=Book()
+        Book(name=name,author=author,desc=desc,pdf=pdf).save()
+        '''obj=Book()
         obj.name=name
         obj.author=author
         obj.desc=desc
         obj.pdf=pdf
-        obj.save()
+        obj.save()'''
         return redirect(librarianindex)
     else:
         return render(request,"librarian/addbook.html")
     
 
 #editing form
+
 
 
 def editbook(request, pk):
