@@ -330,27 +330,9 @@
                 <div class="card-body">
                     <form action="" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
-                        <div class="mb-3">
-                            <label for="" class="form-label">Name</label>
-                            <input type="text" Required name="name" value="{{data.name}}" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Author</label>
-                            <input type="text" Required name="author" value="{{data.author}}"
-                                class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Description</label>
-                            <input type="text" Required name="desc" value="{{data.desc}}" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            {% if data.pdf %}
-                            <img src="{{ data.pdf.url }}" alt="image here" class="prod-size">
-                            {% endif %}
-                            <label for="" class="form-label">pdf</label>
-                            <input type="file" name="pdf" class="form-control">
-                        </div>
-                        <button type="submit" class="btn btn-warning">Update</button>
+                        
+                        {{ form.as_p }} 
+                        <input type="submit" value="Update">
                     </form>
                     <br>
                 </div>
