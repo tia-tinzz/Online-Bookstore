@@ -83,7 +83,10 @@ class AddBook(View):
 
 #class based view for editbook
 '''class EditBook(View):
-    def get(self,request,pk):'''
+    def get(self,request,pk):
+
+        data = Book.objects.get(id=pk)'''
+
 #editing form function based
 
 def editbook(request, pk):
