@@ -35,6 +35,7 @@ class LoginView(View):
         if user is not None:
             auth.login(request,user)
             send_mail('Login successful','Welcome to our mini bookstore!!',settings.EMAIL_HOST_USER,[username])
+            #request.session['AUTHSESSION']=username
             return redirect('user/userindexpage')
         else:
             messages.info(request,'invalid credentials')
