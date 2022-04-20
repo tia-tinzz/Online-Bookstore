@@ -9,6 +9,6 @@ urlpatterns=[
     path('edit/<str:pk>',v.EditBook.as_view(),name="librarian/editbookpage"),
     path('userindex/',v.UserIndexView.as_view(),name="user/userindexpage"),
     #path('update/<str:pk>',v.updatedata,name="librarian/updatepage"),
-    #path('delete/<int:pk>',v.DeleteDataView.as_view(),name="librarian/deletepage"),
-    path('delete/<int:pk>',v.deletedata,name="librarian/deletepage"),
+    path('delete/<str:pk>',v.DeleteDataView.as_view(),name="librarian/deletepage"),
+    #path('delete/<int:pk>',v.deletedata,name="librarian/deletepage"),
 ]

@@ -1,4 +1,4 @@
-from pyexpat import model
+#from pyexpat import model
 from django.core.checks import messages
 from django.contrib import messages
 #from django.http import response,Http404
@@ -97,13 +97,19 @@ class EditBook(UpdateView):
 '''class DeleteDataView(DeleteView):
     model=Book
     success_url = reverse_lazy('librarian/librarianindex')'''
-
+class DeleteDataView(View):
+    def get(self,request,pk):
+        return render(request,"librarian/book_confirm_delete.html")
+    def post(self,request,pk):
+        data=Book.objects.get(id=pk)
+        data.delete()
+        return redirect('librarian/librarianindex')
 #deleting data from form
 
-def deletedata(request,id):
+'''def deletedata(request,id):
     data=Book.objects.get(id=id)
     data.delete()
-    return redirect('librarian/librarianindex')
+    return redirect('librarian/librarianindex')'''
 #Function based views for this project
 '''def index(request):
     return render(request,"index.html")

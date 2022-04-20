@@ -37,7 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bookstoreapp'
+    'bookstoreapp',
+    'django.contrib.sites',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -63,10 +69,13 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request',
             ],
         },
     },
 ]
+
+
 
 WSGI_APPLICATION = 'onlinelibrary.wsgi.application'
 
@@ -133,6 +142,33 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_HOST="smtp.gmail.com"
 EMAIL_PORT=587
 EMAIL_HOST_USER="tinzquest12@gmail.com"
-EMAIL_HOST_PASSWORD="*******"
+EMAIL_HOST_PASSWORD="tinz*122"
 EMAIL_USE_TLS=True
 EMAIL_USE_SSL=False
+
+AUTHENTICATION_BACKENDS = [
+   
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+
+SITE_ID = 1
+
+SOCIALACCOUNT_QUERY_EMAIL=True
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        # For each OAuth based provider, either add a ``SocialApp``
+        # (``socialaccount`` app) containing the required client
+        # credentials, or list them here:
+        'APP': {
+            'client_id': '485132594437-i8cdbk4hl6du6o2r4r661im0ui6q9llu.apps.googleusercontent.com',
+            'secret': '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',
+            'key': ''
+        }
+    }
+}
+LOGIN_REDIRECT_URL = 'user/userindexpage'

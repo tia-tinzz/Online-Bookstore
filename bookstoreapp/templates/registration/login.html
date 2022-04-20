@@ -1,3 +1,4 @@
+{% load socialaccount %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="zxx">
@@ -296,6 +297,7 @@
                                                             <input type="submit" value="Login" name="login" class="button btn btn-default">
                                                             <div class="clear"></div>
                                                         </form>
+                                                        <div><a href="{% provider_login_url 'google' %}" class="btn btn-primary"></div>
                                                         <div >
                                                             
                                                             {% for messages in messages  %}
