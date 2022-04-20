@@ -142,7 +142,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_HOST="smtp.gmail.com"
 EMAIL_PORT=587
 EMAIL_HOST_USER="tinzquest12@gmail.com"
-EMAIL_HOST_PASSWORD="tinz*122"
+EMAIL_HOST_PASSWORD="*******"
 EMAIL_USE_TLS=True
 EMAIL_USE_SSL=False
 
@@ -165,8 +165,8 @@ SOCIALACCOUNT_PROVIDERS = {
         # (``socialaccount`` app) containing the required client
         # credentials, or list them here:
         'APP': {
-            'client_id': '485132594437-i8cdbk4hl6du6o2r4r661im0ui6q9llu.apps.googleusercontent.com',
-            'secret': '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',
+            'client_id': 'id',
+            'secret': 'your key',
             'key': ''
         }
     }
