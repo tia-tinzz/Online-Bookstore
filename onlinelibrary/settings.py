@@ -142,7 +142,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_HOST="smtp.gmail.com"
 EMAIL_PORT=587
 EMAIL_HOST_USER="tinzquest12@gmail.com"
-EMAIL_HOST_PASSWORD="*******"
+EMAIL_HOST_PASSWORD="tinz*122"
 EMAIL_USE_TLS=True
 EMAIL_USE_SSL=False
 
@@ -165,10 +165,17 @@ SOCIALACCOUNT_PROVIDERS = {
         # (``socialaccount`` app) containing the required client
         # credentials, or list them here:
         'APP': {
-            'client_id': 'id',
-            'secret': 'your key',
+            'client_id': '485132594437-i8cdbk4hl6du6o2r4r661im0ui6q9llu.apps.googleusercontent.com',
+            'secret': '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',
             'key': ''
         }
     }
 }
 LOGIN_REDIRECT_URL = 'user/userindexpage'
+
+
+STRIPE_SECRET_KEY='sk_test_51KpmbJSGnrdrktnNzvwJaFHpVncSj1J9KiObVVu8xj6sXNwbDgXnza2KtwDWlt4jr0HpWwxE1CxwIJVHdyrq8OrK00yChhN58N'
+STRIPE_PUBLIC_KEY='pk_test_51KpmbJSGnrdrktnNgpkmXf8qlr1VS2W6a049T5fdEDqFIzySDP13b8BYwBElQ9b4LoiM7qvFiajxDGa6fiP3GFNF00i0WbrqDv'
+
+STRIPE_WEBHOOK_SECRET ='whsec_5d4d67c18e0f1207b0bc783e8efa2bec1dad77d8c9d0e78ff2265bbcf1eb8b61'
+

@@ -66,10 +66,10 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="topbar-links">
-                                                <!--<a href="{% url 'registration/loginpage' %}"><i class="fa fa-lock"></i>Login / Register</a>-->
+                                                <a href="{% url 'registration/logout' %}"><i class="fa fa-lock"></i>Logout</a>
                                                 <span>|</span>
                                                 <div class="header-cart dropdown">
-                                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                                    <a data-toggle="dropdown" class="dropdown-toggle" href="{% url 'user/checkout' %}">
                                                         <i class="fa fa-shopping-cart"></i>
                                                         <small>0</small>
                                                     </a>
@@ -77,45 +77,23 @@
                                                         <ul>
                                                             <li class="clearfix">
                                                                 <img src="{% static 'theme/images/header-cart-image-01.jpg' %}" alt="cart item" />
-                                                                <div class="item-info">
-                                                                    <div class="name">
-                                                                        <a href="#">The Great Gatsby</a>
-                                                                    </div>
-                                                                    <div class="author"><strong>Author:</strong> F. Scott Fitzgerald</div>
-                                                                    <div class="price">1 X $10.00</div>
-                                                                </div>
+                                                                
                                                                 <a class="remove" href="#"><i class="fa fa-trash-o"></i></a>
                                                             </li>
                                                             <li class="clearfix">
                                                                 <img src="{% static 'theme/images/header-cart-image-02.jpg' %}" alt="cart item" />
-                                                                <div class="item-info">
-                                                                    <div class="name">
-                                                                        <a href="#">The Great Gatsby</a>
-                                                                    </div>
-                                                                    <div class="author"><strong>Author:</strong> F. Scott Fitzgerald</div>
-                                                                    <div class="price">1 X $10.00</div>
-                                                                </div>
+                                                                
                                                                 <a class="remove" href="#"><i class="fa fa-trash-o"></i></a>
                                                             </li>
                                                             <li class="clearfix">
                                                                 <img src="{% static 'theme/images/header-cart-image-03.jpg' %}" alt="cart item" />
-                                                                <div class="item-info">
-                                                                    <div class="name">
-                                                                        <a href="#">The Great Gatsby</a>
-                                                                    </div>
-                                                                    <div class="author"><strong>Author:</strong> F. Scott Fitzgerald</div>
-                                                                    <div class="price">1 X $10.00</div>
-                                                                </div>
+                                                                
                                                                 <a class="remove" href="#"><i class="fa fa-trash-o"></i></a>
                                                             </li>
                                                         </ul>
-                                                        <div class="cart-total">
-                                                            <div class="title">SubTotal</div>
-                                                            <div class="price">$30.00</div>
-                                                        </div>
                                                         <div class="cart-buttons">
                                                             <a href="cart.html" class="btn btn-dark-gray">View Cart</a>
-                                                            <a href="checkout.html" class="btn btn-primary">Checkout</a>
+                                                            <a href="#" class="btn btn-primary">Checkout</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -133,6 +111,11 @@
                                                 <li><a href="{% url 'homepage' %}">Home V3</a></li>
                                             </ul>
                                         </li>
+                                        <li><a href="{% url 'user/cancelsubscription' %}">Cancel Subscription</a></li>
+                                        <li><a href="{% url 'user/pausesubscription' %}">Pause Subscription</a></li>
+                                        <li><a href="{% url 'user/resumesubscription' %}">Resume Subscription</a></li>
+                                        <li><a href="{% url 'user/updatesubscription' %}">Update Subscription</a></li>
+
                                         <!--<li class="dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle disabled" href="books-media-list-view.html">Books &amp; Media</a>
                                             <ul class="dropdown-menu">
@@ -247,8 +230,8 @@
                             <h2>Discover Your Roots</h2>
                             <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humor, or randomized words.</p>
                             <div class="slide-buttons hidden-sm hidden-xs">    
-                                <a href="#" class="btn btn-primary">Read More</a>
-                                <a href="#" class="btn btn-default">Purchase</a>
+                                <a href="{% url 'user/checkout' %}" class="btn btn-primary">Read More Then Pay to get one time access</a>
+                                <a href="{% url 'user/subscriptionplan' %}" class="btn btn-default">Get More Access?Subscribe</a>
                             </div>
                         </div>
                     </div>
@@ -263,8 +246,8 @@
                             <h2>Discover Your Roots</h2>
                             <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humor, or randomized words.</p>
                             <div class="slide-buttons hidden-sm hidden-xs">    
-                                <a href="#" class="btn btn-primary">Read More</a>
-                                <a href="#" class="btn btn-default">Purchase</a>
+                                <a href="{% url 'user/checkout' %}" class="btn btn-primary">Read More ,pay for one time access</a>
+                                <a href="{% url 'user/checkoutsubscription' %}" class="btn btn-default">Get more acces? Then Subscribe</a>
                             </div>
                         </div>
                     </div>
@@ -279,8 +262,8 @@
                             <h2>Discover Your Roots</h2>
                             <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humor, or randomized words.</p>
                             <div class="slide-buttons hidden-sm hidden-xs">    
-                                <a href="#" class="btn btn-primary">Read More</a>
-                                <a href="#" class="btn btn-default">Purchase</a>
+                                <a href="{% url 'user/checkout' %}" class="btn btn-primary">Read More,pay for one time access</a>
+                                <a href="{% url 'user/checkoutsubscription' %}" class="btn btn-default">Get more acces? Then Subscribe</a>
                             </div>
                         </div>
                     </div>
@@ -302,6 +285,7 @@
             <th>AUTHOR</th>
             <th>DESCRIPTION</th>
             <th>PDF</th>
+            
         </tr>
         <tr>
             {% for i in obj %}
@@ -311,6 +295,7 @@
             <td>{{i.desc}}</td>
             
             <td><a class="btn btn-primary badge" href="{{i.pdf.url}}" download>Download</a></td>
+            
         </tr>
         {% endfor %}
         </tr>

@@ -69,6 +69,7 @@
                                         <div class="col-sm-6">
                                             <div class="topbar-links">
                                                 <a href="{% url 'registration/registerpage' %}"><i class="fa fa-lock"></i> Register</a>
+                                                <a href="{% url 'registration/logout' %}"><i class="fa fa-lock"></i>Logout</a>
                                                 <span>|</span>
                                                 <div class="header-cart dropdown">
                                                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -295,9 +296,10 @@
                                                                 </p>
                                                             </div>
                                                             <input type="submit" value="Login" name="login" class="button btn btn-default">
-                                                            <div class="clear"></div>
+                                                            <br>
+                                                            <div class="clear"> OR</div>
                                                         </form>
-                                                        <div><a href="{% provider_login_url 'google' %}" class="btn btn-primary"></div>
+                                                        <div><a href="{% provider_login_url 'google' %}" class="btn btn-primary">Login with your google account</a></div>
                                                         <div >
                                                             
                                                             {% for messages in messages  %}
