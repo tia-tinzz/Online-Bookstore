@@ -69,3 +69,53 @@ def librarianindex(request):
 def userindex(request):
     #data=Book.objects.all()
     return render(request,"user/userindex.html")
+
+
+'''   {% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<div class="container mt-5">
+    {% if subscription.status == "active" %}
+    <h4>Your subscription:</h4>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">
+                {{ product.description }}
+            </p>
+            <button><a href="{% url 'user/pausesubscription' %}">Pause Subscription</a></button>
+            <br>
+            <br>
+            <button><a href="{% url 'user/resumesubscription' %}">Resume Subscription</a></button>
+            <br>
+            <br>
+            <button><a href="{% url 'user/updatesubscription' %}">Update Subscription</a></button>
+            <br>
+            <br>
+            <button><a href="{% url 'user/accessmore' %}">See more</a></button>
+
+        </div>
+        {% endif %}
+    </div>
+</div>
+<br>
+<div class="container">
+
+    {% if cancel_at_period_end %}
+    <h4>Your membership will run to the end of your billing cycle.</h4>
+    <br>
+    <br>
+    <button><a href="{% url 'user/userindexpage' %}">GO to Userindex page</a></button>
+    <br>
+    <br>
+    {% elif membership %}
+    <form action="{% url 'user/cancelsubscription' %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Cancel Membership?">
+    </form>
+    {% else %}
+    <a href="{% url 'user/subscriptionplan' %}">Get a membership</a>
+    {% endif %}
+</div>
+{% endblock %}'''

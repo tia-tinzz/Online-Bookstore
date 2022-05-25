@@ -39,7 +39,7 @@ class LoginView(View):
             return redirect('librarian/librarianindex')
         if user is not None:
             auth.login(request,user)
-            send_mail('Login successful','Welcome to our mini bookstore!!',settings.EMAIL_HOST_USER,[username])
+            #send_mail('Login successful','Welcome to our mini bookstore!!',settings.EMAIL_HOST_USER,[username])
             #request.session['AUTHSESSION']=username
             return redirect('user/userindexpage')
         else:
@@ -61,7 +61,7 @@ class RegisterView(View):
             else:
                 user=User.objects.create_user(username=username,password=password)
                 user.save()
-                send_mail('Registration successful','Login to see more!!',settings.EMAIL_HOST_USER,[username])
+                #send_mail('Registration successful','Login to see more!!',settings.EMAIL_HOST_USER,[username])
                 return redirect('registration/loginpage')
         else:
             messages.info(request,'password is not matching...')
@@ -123,7 +123,7 @@ def checkout(request):
     price_id='price_1KyU5ZSGnrdrktnN36LDP8RB'
     session = stripe.checkout.Session.create(
             payment_method_types=['card'],
-            customer_email=request.user.email,
+            customer_email=request.user.username,
             line_items=[{
                 'price': price_id,
                 'quantity': 1,
@@ -170,7 +170,7 @@ def checkoutsubscription(request):
         # Create Stripe Checkout
         session = stripe.checkout.Session.create(
             payment_method_types=['card'],
-            customer_email=request.user.email,
+            customer_email=request.user.username,
             line_items=[{
                 'price': membership_id,
                 'quantity': 1,
@@ -223,12 +223,12 @@ def cancelsubscription(request):
                 membership = True
                 subscription = stripe.Subscription.retrieve(
                     request.user.customer.stripe_subscription_id)
-                product = stripe.Product.retrieve(subscription.plan.product)
+                #product = stripe.Product.retrieve(subscription.plan.product)
             if request.user.customer.cancel_at_period_end:
                 cancel_at_period_end = True
         except Customer.DoesNotExist:
             membership = False
-    return render(request, 'user/cancelsubscription.html', {'subscription': subscription, 'product': product, 'membership': membership, 'cancel_at_period_end': cancel_at_period_end})
+    return render(request, 'user/cancelsubscription.html', {'subscription': subscription,'membership': membership, 'cancel_at_period_end': cancel_at_period_end})
 
 
 
@@ -275,3 +275,8 @@ def updatesubscription(request):
         )
         
         return render(request,'user/update.html')
+
+#only subscribed users can see this page
+
+def accessmore(request):
+    return render(request,'user/accessmore.html')

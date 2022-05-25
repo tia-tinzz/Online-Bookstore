@@ -22,5 +22,5 @@ urlpatterns=[
     path('pausesubscription', v.pausesubscription, name='user/pausesubscription'),
     path('resumesubscription', v.resumesubscription, name='user/resumesubscription'),
     path('updatesubscription',v.updatesubscription,name='user/updatesubscription'),
-    
+    path('accessmore',v.accessmore,name='user/accessmore'),
 ]
