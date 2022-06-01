@@ -176,7 +176,7 @@ def checkoutsubscription(request):
                 'quantity': 1,
             }],
             mode='subscription',
-            allow_promotion_codes=True,
+            #allow_promotion_codes=True,
             success_url='http://127.0.0.1:8000/successsub?session_id={CHECKOUT_SESSION_ID}',
             cancel_url='http://127.0.0.1:8000/cancel',
         )
@@ -228,7 +228,7 @@ def cancelsubscription(request):
                 cancel_at_period_end = True
         except Customer.DoesNotExist:
             membership = False
-    return render(request, 'user/cancelsubscription.html', {'subscription': subscription,'membership': membership, 'cancel_at_period_end': cancel_at_period_end})
+    return render(request, 'user/cancelsubscription.html', {'membership': membership, 'cancel_at_period_end': cancel_at_period_end})
 
 
 
