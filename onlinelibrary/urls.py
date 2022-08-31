@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('bookstoreapp.urls')),
     path('accounts/', include('allauth.urls')),
+    path('chat/', include('chat.urls')),  # new
     
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

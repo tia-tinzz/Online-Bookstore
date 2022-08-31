@@ -1,23 +1,21 @@
-#from pyexpat import model
+import os
+#import stripe
+import stripe
 from django.core.checks import messages
 from django.contrib import messages
-#from django.http import response,Http404
 from django.shortcuts import render,HttpResponse,redirect
 from django.contrib.auth.models import User,auth
 from django.contrib.auth import logout
 from .models import Book, Purchase,Customer
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
-#from django.conf.urls.static import static
 from.form import EditForm
-import os
 from django.core.mail import send_mail
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView
 from django.views import View
 from django.views.generic.list import ListView
 from django.views.generic.edit import UpdateView
-import stripe
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -30,6 +28,7 @@ class Index(TemplateView):
 class LoginView(View):
     def get(self,request):
         return render(request,"registration/login.html")
+
     def post(self,request):
         username=request.POST['username']
         password=request.POST['password']
@@ -39,32 +38,36 @@ class LoginView(View):
             return redirect('librarian/librarianindex')
         if user is not None:
             auth.login(request,user)
-            #send_mail('Login successful','Welcome to our mini bookstore!!',settings.EMAIL_HOST_USER,[username])
+            #send_mail('Login successful','Welcome to our mini bookstore!!',\
+            # settings.EMAIL_HOST_USER,[username])
             #request.session['AUTHSESSION']=username
             return redirect('user/userindexpage')
         else:
-            messages.info(request,'invalid credentials')
+            messages.info(request, 'invalid credentials')
             return redirect('registration/loginpage')
 
 #class based view for registration
 class RegisterView(View):
     def get(self,request):
         return render(request,"registration/register.html")
+
     def post(self,request):
         username=request.POST['username']
         password=request.POST['password']
+        #confirm password
         password2=request.POST['password2'] 
         if password==password2:
             if User.objects.filter(username=username).exists():
-                messages.info(request,'username already taken')
+                messages.info(request, 'username already taken')
                 return redirect('registration/loginpage')
             else:
                 user=User.objects.create_user(username=username,password=password)
                 user.save()
-                #send_mail('Registration successful','Login to see more!!',settings.EMAIL_HOST_USER,[username])
+                #send_mail('Registration successful',\
+                # 'Login to see more!!',settings.EMAIL_HOST_USER,[username])
                 return redirect('registration/loginpage')
         else:
-            messages.info(request,'password is not matching...')
+            messages.info(request, 'password is not matching...')
             return redirect('registration/registerpage')
 
 #class based view for viewing index page
@@ -76,6 +79,7 @@ class LibrarianIndexView(ListView):
 #class based view for userindexpage
 class UserIndexView(ListView):
     model=Book
+    paginate_by = 3
     template_name="user/userindex.html"
     context_object_name='obj'
 
@@ -83,6 +87,7 @@ class UserIndexView(ListView):
 class AddBook(View):
     def get(self,request):
        return render(request,"librarian/addbook.html") 
+
     def post(self,request):
         name=request.POST.get('name')
         author=request.POST.get('author')
@@ -103,6 +108,7 @@ class EditBook(UpdateView):
 class DeleteDataView(View):
     def get(self,request,pk):
         return render(request,"librarian/book_confirm_delete.html")
+
     def post(self,request,pk):
         data=Book.objects.get(id=pk)
         data.delete()
@@ -134,7 +140,8 @@ def checkout(request):
             cancel_url='http://127.0.0.1:8000/cancel',
     )
 
-    return render(request, 'user/checkout.html', {'final_dollar': final_dollar, 'session_id': session.id})
+    return render(request, 'user/checkout.html', {'final_dollar': final_dollar,\
+         'session_id': session.id})
 
 def success(request):
     return render(request, 'user/success.html')
@@ -280,3 +287,5 @@ def updatesubscription(request):
 
 def accessmore(request):
     return render(request,'user/accessmore.html')
+
+
