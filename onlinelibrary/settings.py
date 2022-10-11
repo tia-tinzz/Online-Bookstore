@@ -184,7 +184,7 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 LOGIN_REDIRECT_URL = 'user/userindexpage'
-
+SOCIALACCOUNT_LOGIN_ON_GET = True #django allauth google login prevent extra page
 
 STRIPE_SECRET_KEY='sk_test_51KpmbJSGnrdrktnNzvwJaFHpVncSj1J9KiObVVu8xj6sXNwbDgXnza2KtwDWlt4jr0HpWwxE1CxwIJVHdyrq8OrK00yChhN58N'
 STRIPE_PUBLIC_KEY='pk_test_51KpmbJSGnrdrktnNgpkmXf8qlr1VS2W6a049T5fdEDqFIzySDP13b8BYwBElQ9b4LoiM7qvFiajxDGa6fiP3GFNF00i0WbrqDv'
