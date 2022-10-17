@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-5_7faz7m6pie2vxo@%i+cr7ur4sj@!io$nj=@c5ft)+4cw+kwo
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'chat.apps.ChatConfig',  # new
     'channels',  # new
+   
 ]
 
 MIDDLEWARE = [
@@ -56,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+         
 ]
 
 ROOT_URLCONF = 'onlinelibrary.urls'
@@ -137,14 +139,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 MEDIA_URL='/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'media_cdn')
 STATICFILES_DIRS=[
-    os.path.join(BASE_DIR,'static')
+    os.path.join(BASE_DIR,'web/static')
 ]
-STATIC_ROOT=os.path.join(BASE_DIR,'assets')
-
+STATIC_ROOT=os.path.join(BASE_DIR,'static')
+#STATIC_ROOT = '/assets'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
@@ -185,6 +187,7 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 LOGIN_REDIRECT_URL = 'user/userindexpage'
 
+SOCIALACCOUNT_LOGIN_ON_GET = True #django allauth google login prevent extra page
 
 STRIPE_SECRET_KEY='sk_test_51KpmbJSGnrdrktnNzvwJaFHpVncSj1J9KiObVVu8xj6sXNwbDgXnza2KtwDWlt4jr0HpWwxE1CxwIJVHdyrq8OrK00yChhN58N'
 STRIPE_PUBLIC_KEY='pk_test_51KpmbJSGnrdrktnNgpkmXf8qlr1VS2W6a049T5fdEDqFIzySDP13b8BYwBElQ9b4LoiM7qvFiajxDGa6fiP3GFNF00i0WbrqDv'
