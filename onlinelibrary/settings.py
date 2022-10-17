@@ -25,7 +25,11 @@ SECRET_KEY = 'django-insecure-5_7faz7m6pie2vxo@%i+cr7ur4sj@!io$nj=@c5ft)+4cw+kwo
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+<<<<<<< HEAD
 ALLOWED_HOSTS = ["*"]
+=======
+ALLOWED_HOSTS = ['*']
+>>>>>>> 899ba416a1fcd587defdd2b3f28aa1066ec0baf5
 
 
 # Application definition
@@ -186,7 +190,10 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 LOGIN_REDIRECT_URL = 'user/userindexpage'
+<<<<<<< HEAD
 
+=======
+>>>>>>> 899ba416a1fcd587defdd2b3f28aa1066ec0baf5
 SOCIALACCOUNT_LOGIN_ON_GET = True #django allauth google login prevent extra page
 
 STRIPE_SECRET_KEY='sk_test_51KpmbJSGnrdrktnNzvwJaFHpVncSj1J9KiObVVu8xj6sXNwbDgXnza2KtwDWlt4jr0HpWwxE1CxwIJVHdyrq8OrK00yChhN58N'
